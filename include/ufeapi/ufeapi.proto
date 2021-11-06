@@ -1,0 +1,89 @@
+//-----------------------------------------------------------------------------------------
+/*
+$Id: 86edf304733e9c14e12eed2df1d4f59cd23a3b0c $
+    ____                      __      ____
+   /\  _`\   __             /'_ `\   /\  _`\
+   \ \ \L\_\/\_\    __  _  /\ \L\ \  \ \ \L\ \ _ __    ___
+    \ \  _\/\/\ \  /\ \/'\ \/_> _ <_  \ \ ,__//\`'__\ / __`\
+     \ \ \/  \ \ \ \/>  </   /\ \L\ \  \ \ \/ \ \ \/ /\ \L\ \
+      \ \_\   \ \_\ /\_/\_\  \ \____/   \ \_\  \ \_\ \ \____/
+       \/_/    \/_/ \//\/_/   \/___/     \/_/   \/_/  \/___/
+
+               Fix8Pro FIX Engine and Framework
+
+Copyright (C) 2010-20 Fix8 Market Technologies Pty Ltd (ABN 29 167 027 198)
+All Rights Reserved. [http://www.fix8mt.com] <heretohelp@fix8mt.com>
+
+THIS FILE IS PROPRIETARY AND  CONFIDENTIAL. NO PART OF THIS FILE MAY BE REPRODUCED,  STORED
+IN A RETRIEVAL SYSTEM,  OR TRANSMITTED, IN ANY FORM OR ANY MEANS,  ELECTRONIC, PHOTOSTATIC,
+RECORDED OR OTHERWISE, WITHOUT THE PRIOR AND  EXPRESS WRITTEN  PERMISSION  OF  FIX8  MARKET
+TECHNOLOGIES PTY LTD.
+
+*/
+//-----------------------------------------------------------------------------------------
+syntax = "proto3";
+package UFE;
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+message UFEField
+{
+    enum UFEFieldLocation
+    {
+        fl_body = 0; // default to body
+        fl_header = 1;
+        fl_trailer = 2;
+        fl_system = 3; // not included in a FIX message
+    }
+    UFEFieldLocation location = 1;
+
+    enum UFEFieldType
+    {
+        ft_unknown = 0; // default
+        ft_int = 1;
+        ft_char = 2;
+        ft_double = 3;
+        ft_string = 4;
+        ft_bool = 5;
+        ft_time = 6;
+        ft_msg = 7;
+        ft_uuid = 8; // from here is non-FIX
+        ft_status = 9; // ufeed status code
+    }
+    UFEFieldType type = 2;
+
+    uint32 tag = 3;
+
+    int64 ival = 4; // ft_int or ft_time
+    double fval = 5;
+    bool bval = 6;
+    bytes sval = 7; // ft_string, ft_char or ft_uuid
+
+    repeated WireMessage mval = 8;
+}
+
+message WireMessage
+{
+    enum Type
+    {
+        st_fixmsg = 0; // default
+        st_system = 1;
+        st_servicelist = 2;
+        st_dictionary = 3;
+        st_sysstrings = 4;
+        st_response = 5;
+        st_error = 6;
+        st_servicelog = 7;
+        st_heartbeat = 8;
+        st_serviceupdate = 9;
+    }
+
+    string name = 1;
+    string longname = 2;
+    uint32 seq = 3;
+    Type type = 4;
+    int32 service_id = 5;
+    int32 subservice_id = 6;
+    repeated UFEField fields = 7;
+}
+

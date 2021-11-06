@@ -1,0 +1,23 @@
+root=true
+
+[*.cmake]
+indent_style = tab
+indent_size = 3
+[CMakeLists.txt]
+indent_style = tab
+indent_size = 3
+[*.cpp]
+indent_style = tab
+indent_size = 3
+[*.c]
+indent_style = tab
+indent_size = 3
+[*.h]
+indent_style = tab
+indent_size = 3
+[*.hpp]
+indent_style = tab
+indent_size = 3
+[*.cmake.in]
+indent_style = tab
+indent_size = 3
