@@ -57,7 +57,7 @@ The `UFEed_C++` is provided as a shared library in either .so (Linux) or .dll
 (Windows) format. It has no external dependencies besides Google
 Protobuf library header files that are included in the installation
 package. Google Protobuf and ZeroMQ libraries are linked in to `UFEed_C++`
-statically. Directory structure (example is Linux) is as follows:
+statically. Installation directory structure after the build (example is Linux) is as follows:
 
 ``` 
 ufeed_bindings_cpp
