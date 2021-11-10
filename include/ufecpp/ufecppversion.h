@@ -32,10 +32,10 @@ TECHNOLOGIES PTY LTD.
 #define UFECPP_MAJOR_VERSION_NUM 21
 
 /* Minor version number */
-#define UFECPP_MINOR_VERSION_NUM 6
+#define UFECPP_MINOR_VERSION_NUM 9
 
 /* Patch number */
-#define UFECPP_PATCH_VERSION_NUM 1
+#define UFECPP_PATCH_VERSION_NUM 0
 
 /* Semantic number */
 #define UFECPP_SEMANTIC_VERSION_MULT 100
