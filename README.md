@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://www.fix8mt.com"><img src="fix8mt_Master_Logo_Green_Trans.png" width="200"></a>
+</p>
+
 # UFEed C++ Binding
 
 -   [Introduction](#introduction)
@@ -59,7 +63,7 @@ Protobuf library header files that are included in the installation
 package. Google Protobuf and ZeroMQ libraries are linked in to `UFEed_C++`
 statically. Installation directory structure after the build (example is Linux) is as follows:
 
-``` 
+```
 ufeed_bindings_cpp
 ├── include
 │   ├── 3rdparty
@@ -183,7 +187,7 @@ public:
         std::is_same<T,  char>::value || std::is_same<T, unsigned char>::value
         > * = nullptr>
     Builder& add_field(uint32_t tag, T val, UFEField::UFEFieldLocation loc = UFEField::fl_body);
-    
+
     /**
      * Adds double field
      * \param tag double field tag
@@ -195,7 +199,7 @@ public:
         std::is_same<T,  double>::value || std::is_same<T, float>::value
         > * = nullptr>
     Builder& add_field(uint32_t tag, T val, UFEField::UFEFieldLocation loc = UFEField::fl_body);
-    
+
     /**
      * Adds string field
      * \param tag string field tag
@@ -217,7 +221,7 @@ public:
         std::is_same<typename std::decay<T>::type, std::string_view>::value
         > * = nullptr>
     Builder& add_field(uint32_t tag, T&& val, UFEField::UFEFieldLocation loc = UFEField::fl_body);
-    
+
     /**
      * Adds bool field
      * \param tag bool field tag
@@ -226,7 +230,7 @@ public:
      * \return *this
      */
     Builder& add_field(uint32_t tag, bool val, UFEField::UFEFieldLocation loc = UFEField::fl_body);
-    
+
     /**
      * Adds time field
      * \param tag time field tag
@@ -235,7 +239,7 @@ public:
      * \return *this
      */
     Builder& add_field(uint32_t tag, TimePoint&& val, UFEField::UFEFieldLocation loc = UFEField::fl_body);
-    
+
     /**
      * Adds UUID field
      * \param tag uuid tag
@@ -400,7 +404,7 @@ public:
     UFEField* find_field(uint32_t tag);
     template<typename T>
     std::optional<T> find_field_value(uint32_t tag) const;
-    
+
     /**
      * Finds group
      * \param tag group tag to find
@@ -595,7 +599,7 @@ public:
      */
     UFECPPAPI UFEMessage::Builder create_message();
     UFECPPAPI UFEMessage::Builder create_message(WireMessagePtr&& wm);
-    
+
     /**
      * Synchronously sends request to UFEGW and waits for UFE response, REQ/REP pattern
      * \param request request to send. Ownership of UFEMessage unique ptr IS taken. \see UFEMessage
